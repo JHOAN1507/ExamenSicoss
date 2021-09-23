@@ -1,0 +1,56 @@
+﻿@model List<Datos.Cita>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row" style="text-align:right;padding:5px;">
+    <a href="~/Home/Crear" class="btn btn-primary">Crear Cita</a>
+</div>
+<div class="row">
+    <table id="mytable" class="table" style="width: 100%">
+        <thead>
+            <tr role="row">
+                <th>Clave</th>
+                <th>Paciente</th>
+                <th>Curp</th>
+                <th>Fecha Cita </th>
+                <th>Medico</th>
+                <th>Cedula</th>
+                <th>Especialidad</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCita)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Curp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCita)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medico.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medico.cedula)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especialidad.Descripcion)
+                </td>
+                <td>
+                    <a class="btn btn-warning" href="~/Home/Editar/@item.IdCita">Editar</a>
+                    <a class="btn btn-danger" href="~/Home/Eliminar/@item.IdCita">Eliminar</a>
+                </td>
+            </tr>            
+    }
+        </tbody>
+    </table>
+</div>
